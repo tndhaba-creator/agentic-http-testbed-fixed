@@ -1,0 +1,24 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Agentic Testbed",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/search": {
+      "get": {
+        "summary": "Search products"
+      }
+    },
+    "/api/book": {
+      "post": {
+        "summary": "Book a product"
+      }
+    },
+    "/api/status": {
+      "get": {
+        "summary": "Check booking status"
+      }
+    }
+  }
+}
