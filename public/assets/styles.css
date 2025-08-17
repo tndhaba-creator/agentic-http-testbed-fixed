@@ -1,16 +1,22 @@
 
-:root{--fg:#0f172a;--muted:#475569;--bg:#f8fafc;--brand:#2563eb;--card:#ffffff;}
+:root{--fg:#0f172a;--muted:#475569;--bg:#f8fafc;--brand:#2563eb;--card:#ffffff}
 *{box-sizing:border-box}
 body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;color:var(--fg);background:var(--bg)}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
 header{background:#fff;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:10}
-.container{max-width:960px;margin:0 auto;padding:16px}
-nav a{margin-right:16px;color:var(--brand);text-decoration:none}
-nav a:hover{text-decoration:underline}
+.container{max-width:1100px;margin:0 auto;padding:16px}
+nav a{margin-right:16px}
 main{padding:24px 0}
-.card{background:var(--card);border:1px solid #e2e8f0;border-radius:12px;padding:16px;margin:12px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
-.badge{font-size:12px;color:#fff;background:var(--brand);padding:2px 8px;border-radius:999px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid #e2e8f0;border-radius:14px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.hero{display:flex;gap:24px;align-items:center}
+.hero img{width:320px;height:200px;object-fit:cover;border-radius:12px;border:1px solid #e2e8f0}
+.badge{display:inline-block;background:var(--brand);color:#fff;padding:2px 8px;border-radius:999px;font-size:12px}
 .price{font-weight:700}
-footer{color:var(--muted);padding:24px 0;border-top:1px solid #e2e8f0}
-small.muted{color:var(--muted)}
+footer{border-top:1px solid #e2e8f0;color:var(--muted);padding:24px 0;margin-top:24px}
+.small{font-size:12px;color:var(--muted)}
 .hidden{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+img.product{width:100%;height:150px;object-fit:cover;border-radius:10px;border:1px solid #e2e8f0}
+ul.inline{display:flex;gap:8px;list-style:none;padding:0;margin:0}
+code.inline{background:#eef2ff;padding:2px 6px;border-radius:6px}

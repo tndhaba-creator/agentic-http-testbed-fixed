@@ -1,48 +1,53 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Agentic Testbed Pro",
-    "version": "1.1.0"
+    "title": "Acme Gadgets API",
+    "version": "2.0.0"
   },
   "paths": {
     "/api/products": {
       "get": {
-        "summary": "List/search products"
+        "summary": "List products"
       }
     },
     "/api/search": {
       "get": {
-        "summary": "Search products (alias)"
+        "summary": "Search"
       }
     },
     "/api/product/{id}": {
       "get": {
-        "summary": "Product detail (HTML)"
+        "summary": "Product HTML"
       }
     },
-    "/api/book": {
+    "/api/session": {
+      "get": {
+        "summary": "Issue CSRF"
+      }
+    },
+    "/api/checkout": {
       "post": {
-        "summary": "Book a product"
+        "summary": "Checkout (requires CSRF)"
       }
     },
     "/api/status": {
       "get": {
-        "summary": "Check booking status"
+        "summary": "Verify"
+      }
+    },
+    "/api/track": {
+      "get": {
+        "summary": "Beacon"
       }
     },
     "/api/tools/list": {
       "get": {
-        "summary": "Tool list (decoy)"
+        "summary": "Decoy tool list"
       }
     },
-    "/api/tools/describe_schema": {
+    "/api/internal/schema": {
       "get": {
-        "summary": "Describe schema (decoy)"
-      }
-    },
-    "/api/echo": {
-      "get": {
-        "summary": "Beacon for page views"
+        "summary": "Internal decoy"
       }
     }
   }
