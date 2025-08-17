@@ -1,9 +1,5 @@
 {
-  "name": "agentic-http-testbed",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "vercel dev",
-    "start": "vercel dev"
-  }
+  "name": "agentic-http-testbed-pro",
+  "version": "1.1.0",
+  "private": true
 }

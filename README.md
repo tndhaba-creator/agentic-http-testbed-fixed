@@ -1,24 +1,24 @@
-# Agentic HTTP Testbed (Vercel)
+# Agentic HTTP Testbed — Pro
 
-Minimal site to observe agentic AI traffic:
-- Pages: `/`, `/docs`, `/products`
-- APIs: `/api/search`, `/api/book` (POST), `/api/status`
-- Decoys: `/openapi.json`, `/api/tools/list`
-- Logs: printed to Vercel Logs with method, URL, status, UA, referer, header order, duration.
+A more realistic demo shop to observe agentic AI traffic.
+
+## What's included
+- **Pages**: `/`, `/docs`, `/products` (static HTML with CSS/JS)
+- **Product detail pages**: `/api/product/101`, `/202`, `/303` (HTML from serverless)
+- **APIs**:
+  - `GET /api/products` (list/search/paginate)
+  - `GET /api/search` (alias)
+  - `POST /api/book?product_id=...&email=...` (logs `csrf_present`)
+  - `GET /api/status?id=...`
+  - `GET /api/tools/list` and `GET /api/tools/describe_schema` (decoys)
+  - `GET /api/echo?pg=...` (beacon)
+- **OpenAPI**: `/openapi.json`
+- **Robots & Sitemap**: `/robots.txt`, `/sitemap.xml`
 
 ## Deploy
-1) Create a new GitHub repo and push these files.
-2) Go to Vercel → "New Project" → import the repo → Deploy.
-3) Grab the public URL (e.g., `https://your-project.vercel.app`).
+Upload all files to GitHub (same repo), commit, and let Vercel redeploy.
 
-## Run experiments
-Prompt an agent (ChatGPT/Perplexity/Claude):
-> Start at https://your-project.vercel.app . Find the cheapest product via /api/search, book it with /api/book, then verify using /api/status. If needed, check /openapi.json. Return the booking ID.
-
-## Inspect logs
-Vercel Project → Deployments → "View Functions Logs".
-Look for lines starting with `[REQ]` and analyze:
-- Loop motif (TOOL → ACTION → VERIFY)
-- Decoy hits (`kind: DECOY`)
-- Header name order stability
-- Timing variance (duration_ms)
+## Experiments
+Use natural prompts like:
+- "Browse this site and find the cheapest product. Summarize why it's best and buy it."
+- "Start from the homepage, use docs or schema if needed, purchase the budget option, and verify the order."

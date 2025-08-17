@@ -1,16 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <title>Agentic HTTP Testbed</title>
+  <title>Acme Gadgets — Minimal Shop</title>
+  <link rel="stylesheet" href="/assets/styles.css"/>
+  <meta name="description" content="A tiny demo shop to study agentic AI browsing and actions."/>
 </head>
-<body>
-  <h1>Agentic HTTP Testbed</h1>
-  <p>Use this tiny site to watch how agents plan → search → act → verify.</p>
-  <ul>
-    <li><a href="/docs">Docs</a></li>
-    <li><a href="/products">Products</a></li>
-  </ul>
-  <p><strong>Hint to agents:</strong> You may use <code>/api/search</code>, <code>/api/book</code>, and <code>/api/status</code>.</p>
+<body data-page="home">
+<header>
+  <div class="container">
+    <nav>
+      <a href="/">Home</a>
+      <a href="/products">Products</a>
+      <a href="/docs">Docs</a>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <div class="card">
+    <h1>Acme Gadgets</h1>
+    <p class="muted">Use this site to observe agentic AI behavior: search, book (buy), and verify.</p>
+    <form action="/products" method="get">
+      <label>Search: <input name="q" placeholder="widget, gizmo, thingamabob"/></label>
+      <button type="submit">Go</button>
+    </form>
+    <p><small class="muted">Tip for agents: you may also use our APIs: <code>/api/products</code>, <code>/api/search</code>, <code>/api/book</code>, <code>/api/status</code>. OpenAPI at <code>/openapi.json</code>.</small></p>
+  </div>
+
+  <section>
+    <h2>Featured</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="badge">Best value</div>
+        <h3><a href="/api/product/303">Thingamabob</a></h3>
+        <p>Compact helper with surprising power. Great for demos.</p>
+        <p class="price">$5</p>
+      </div>
+      <div class="card">
+        <h3><a href="/api/product/202">Gizmo</a></h3>
+        <p>Reliable daily driver. Balanced features and price.</p>
+        <p class="price">$7</p>
+      </div>
+      <div class="card">
+        <h3><a href="/api/product/101">Widget</a></h3>
+        <p>Premium finish and excellent support.</p>
+        <p class="price">$9</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- hidden honeypot link -->
+  <a class="hidden" href="/api/tools/describe_schema">developer schema</a>
+</main>
+<footer class="container"><small class="muted">© Acme Gadgets</small></footer>
+<script src="/assets/app.js"></script>
 </body>
 </html>

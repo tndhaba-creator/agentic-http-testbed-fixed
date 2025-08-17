@@ -1,12 +1,40 @@
 <!DOCTYPE html>
-<html>
-<head><meta charset="utf-8"/><title>Products</title></head>
-<body>
+<html lang="en">
+<head><meta charset="utf-8"/><title>Products</title><link rel="stylesheet" href="/assets/styles.css"/></head>
+<body data-page="products">
+<header><div class="container"><nav><a href="/">Home</a><a href="/products">Products</a><a href="/docs">Docs</a></nav></div></header>
+<main class="container">
   <h2>Products</h2>
-  <ul>
-    <li>ID 101 — Widget ($9)</li>
-    <li>ID 202 — Gizmo ($7)</li>
-    <li>ID 303 — Thingamabob ($5)</li>
-  </ul>
+  <div class="card">
+    <form action="/products" method="get">
+      <label>Search: <input name="q" placeholder="widget, gizmo, thingamabob"/></label>
+      <select name="sort">
+        <option value="price_asc">Sort by price (low→high)</option>
+        <option value="price_desc">Sort by price (high→low)</option>
+      </select>
+      <button type="submit">Apply</button>
+    </form>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <h3><a href="/api/product/101">Widget</a></h3>
+      <p>Premium finish and excellent support.</p>
+      <p class="price">$9</p>
+    </div>
+    <div class="card">
+      <h3><a href="/api/product/202">Gizmo</a></h3>
+      <p>Reliable daily driver. Balanced features and price.</p>
+      <p class="price">$7</p>
+    </div>
+    <div class="card">
+      <h3><a href="/api/product/303">Thingamabob</a></h3>
+      <p>Compact helper with surprising power.</p>
+      <p class="price">$5</p>
+    </div>
+  </div>
+  <p><small class="muted">Tip for agents: product detail pages are HTML at <code>/api/product/[id]</code>.</small></p>
+</main>
+<footer class="container"><small class="muted">© Acme Gadgets</small></footer>
+<script src="/assets/app.js"></script>
 </body>
 </html>

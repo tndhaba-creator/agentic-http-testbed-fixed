@@ -3,7 +3,9 @@ import { logRequest } from './_utils/log.js';
 export default async function handler(req, res) {
   const start = Date.now();
   try {
-    const q = (req.query?.q || '').toString().toLowerCase();
+    const url = new URL(req.url, 'http://localhost');
+    const q = (url.searchParams.get('q') || '').toLowerCase();
+
     const items = [
       { id: 101, name: 'Widget', price: 9 },
       { id: 202, name: 'Gizmo', price: 7 },

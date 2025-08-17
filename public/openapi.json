@@ -1,13 +1,23 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Agentic Testbed",
-    "version": "1.0.0"
+    "title": "Agentic Testbed Pro",
+    "version": "1.1.0"
   },
   "paths": {
+    "/api/products": {
+      "get": {
+        "summary": "List/search products"
+      }
+    },
     "/api/search": {
       "get": {
-        "summary": "Search products"
+        "summary": "Search products (alias)"
+      }
+    },
+    "/api/product/{id}": {
+      "get": {
+        "summary": "Product detail (HTML)"
       }
     },
     "/api/book": {
@@ -18,6 +28,21 @@
     "/api/status": {
       "get": {
         "summary": "Check booking status"
+      }
+    },
+    "/api/tools/list": {
+      "get": {
+        "summary": "Tool list (decoy)"
+      }
+    },
+    "/api/tools/describe_schema": {
+      "get": {
+        "summary": "Describe schema (decoy)"
+      }
+    },
+    "/api/echo": {
+      "get": {
+        "summary": "Beacon for page views"
       }
     }
   }
