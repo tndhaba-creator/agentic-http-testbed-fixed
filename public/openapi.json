@@ -1,0 +1,54 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Acme Gadgets API",
+    "version": "2.0.0"
+  },
+  "paths": {
+    "/api/products": {
+      "get": {
+        "summary": "List products"
+      }
+    },
+    "/api/search": {
+      "get": {
+        "summary": "Search"
+      }
+    },
+    "/api/product/{id}": {
+      "get": {
+        "summary": "Product HTML"
+      }
+    },
+    "/api/session": {
+      "get": {
+        "summary": "Issue CSRF"
+      }
+    },
+    "/api/checkout": {
+      "post": {
+        "summary": "Checkout (requires CSRF)"
+      }
+    },
+    "/api/status": {
+      "get": {
+        "summary": "Verify"
+      }
+    },
+    "/api/track": {
+      "get": {
+        "summary": "Beacon"
+      }
+    },
+    "/api/tools/list": {
+      "get": {
+        "summary": "Decoy tool list"
+      }
+    },
+    "/api/internal/schema": {
+      "get": {
+        "summary": "Internal decoy"
+      }
+    }
+  }
+}
