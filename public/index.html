@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ultra Shop Testbed Lite</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    section { padding: 40px; border-bottom: 1px solid #ccc; }
+    img { width: 100%; max-width: 400px; display: block; margin: 20px auto; }
+  </style>
+</head>
+<body>
+  <section id="hero">
+    <h1>Welcome to Ultra Shop Lite</h1>
+    <p>Scroll down to explore our products and offers.</p>
+    <img src="/images/banner.png" alt="Banner"/>
+  </section>
+  <section id="products">
+    <h2>Featured Products</h2>
+    <p>Use the product finder to refine your search.</p>
+  </section>
+  <section id="reviews">
+    <h2>Customer Reviews</h2>
+    <p>(Lazy loaded content...)</p>
+  </section>
+  <section id="newsletter">
+    <h2>Subscribe</h2>
+    <form action="/api/newsletter" method="post">
+      <input type="email" name="email" placeholder="you@example.com"/>
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+</body>
+</html>
