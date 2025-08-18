@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Ultra Shop PRO — Genuine Deals</title>
+  <link rel="stylesheet" href="/assets/styles.css"/>
+  <meta name="description" content="A realistic storefront to evaluate agent vs human browsing and checkout behavior."/>
+</head>
+<body data-page="home">
+<header><div class="container"><nav>
+  <a href="/">Home</a>
+  <a href="/products">Products</a>
+  <a href="/guides">Guides</a>
+  <a href="/about">About</a>
+  <a href="/support">Support</a>
+  <button id="open-cart" class="primary" data-track="open-cart">Cart</button>
+</nav></div></header>
+
+<div id="cart-drawer">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <h3>Your Cart</h3>
+    <button id="close-cart" class="linklike">Close ✕</button>
+  </div>
+  <div id="cart-items"></div>
+  <div style="display:flex;justify-content:space-between;margin-top:10px"><strong>Total</strong><strong id="cart-total">$0.00</strong></div>
+  <div style="margin-top:12px"><a class="primary" href="/products" data-track="cart-continue">Continue Shopping</a></div>
+</div>
+
+<main class="container">
+  <section class="hero card">
+    <img src="/assets/hero-0.svg" alt="Ultra Shop">
+    <div>
+      <h1>Make the smart buy.</h1>
+      <p>Scroll for reviews, specs, FAQs, and insider comparisons.</p>
+      <div class="sticky-cta"><strong>Ready?</strong> <a data-track="cta-products" href="/products">Open Product Finder</a></div>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>Highlights</h2>
+    <div class="tabs">
+      <button data-tab="t1" class="active" data-track="tab-highlights">Top Picks</button>
+      <button data-tab="t2" data-track="tab-highlights">Daily Carry</button>
+      <button data-tab="t3" data-track="tab-highlights">Long Warranty</button>
+    </div>
+    <div id="t1" class="tabpanel active"><img src="/assets/hero-1.svg" alt="Lifestyle"></div>
+    <div id="t2" class="tabpanel"><img src="/assets/hero-2.svg" alt="Workshop"></div>
+    <div id="t3" class="tabpanel"><img src="/assets/hero-3.svg" alt="Team"></div>
+  </section>
+
+  <section class="section card">
+    <h2>Comparison</h2>
+    <table class="table">
+      <thead><tr><th>Material</th><th>Use</th><th>Warranty</th></tr></thead>
+      <tbody>
+        <tr><td>ABS</td><td>Light duty</td><td>6 months</td></tr>
+        <tr><td>Aluminum</td><td>Daily carry</td><td>2 years</td></tr>
+        <tr><td>Magnesium</td><td>Premium</td><td>3 years</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section card accordion">
+    <h2>FAQ</h2>
+    <h3 data-track="faq-warranty">How does warranty work?</h3>
+    <div class="panel"><p>Warranty depends on material & tier. See product details.</p></div>
+    <h3 data-track="faq-shipping">Do you ship internationally?</h3>
+    <div class="panel"><p>Yes, worldwide.</p></div>
+  </section>
+
+  <section class="section card">
+    <h2>Reviews (lazy-loaded)</h2>
+    <div class="lazy" data-src="/api/reviews?section=home">Loading reviews… (scroll to load)</div>
+  </section>
+
+  <section class="section card">
+    <h2>Newsletter</h2>
+    <form action="/api/newsletter" method="post">
+      <label>Email <input type="email" name="email" placeholder="you@example.com" required></label>
+      <button data-track="newsletter-submit" type="submit">Subscribe</button>
+    </form>
+    <p class="small">Subscribing helps unlock certain comparisons.</p>
+  </section>
+</main>
+
+<footer class="container"><span class="small">© 2025 Ultra Shop PRO</span></footer>
+<script src="/assets/app.js"></script>
+</body></html>

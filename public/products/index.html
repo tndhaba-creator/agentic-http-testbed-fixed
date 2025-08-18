@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"/><title>Products — Ultra Shop PRO</title><link rel="stylesheet" href="/assets/styles.css"/></head>
+<body data-page="products">
+<header><div class="container"><nav><a href="/">Home</a><a href="/products">Products</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/support">Support</a><button id="open-cart" class="primary">Cart</button></nav></div></header>
+<main class="container">
+  <div class="card">
+    <h2>Product Finder</h2>
+    <form action="/api/recommend" method="post">
+      <label>Budget <input type="number" name="budget" min="100" max="300" step="1" placeholder="e.g. 170" required></label>
+      <label>Port
+        <select name="port"><option value="">Any</option><option>USB-C</option><option>USB-A</option><option>Micro-USB</option></select>
+      </label>
+      <label>Warranty
+        <select name="warranty"><option value="">Any</option><option>6-month</option><option>1-year</option><option>2-year</option><option>3-year</option></select>
+      </label>
+      <button data-track="finder-submit" type="submit">Apply Preferences</button>
+      <p class="small">Submitting unlocks richer details for this session.</p>
+    </form>
+  </div>
+
+  <div class="card">
+    <form id="searchForm">
+      <label>Search <input name="q" placeholder="widget, gizmo, budget"/></label>
+      <select name="sort"><option value="price_asc">Price (low→high)</option><option value="price_desc">Price (high→low)</option></select>
+      <button type="submit">Apply</button>
+    </form>
+  </div>
+
+  <div id="grid" class="grid"></div>
+  <div id="more" class="card"><button id="loadMore" data-track="load-more">Load more</button></div>
+</main>
+<footer class="container"><span class="small">© 2025 Ultra Shop PRO</span></footer>
+<script src="/assets/app.js"></script>
+<script>
+(async function(){
+  let page = 1; let q=''; let sort='price_asc';
+  const grid = document.getElementById('grid');
+  async function load(){
+    const url = new URL('/api/products', location.origin);
+    url.searchParams.set('page', page); url.searchParams.set('limit', 9); url.searchParams.set('sort', sort);
+    if(q) url.searchParams.set('q', q);
+    const res = await fetch(url); const data = await res.json();
+    data.results.forEach(p=>{
+      const card = document.createElement('div'); card.className='card';
+      card.innerHTML = '<img class="product" src="'+p.img+'" alt="'+p.name+'"/>' +
+                    '<div class="badge">#'+p.id+'</div>' +
+                    '<h3>'+p.name+'</h3>' +
+                    (p.teaser?('<p>'+p.teaser+'</p>'):'') +
+                    (data.rich && p.details ? ('<p class="small">'+p.details.port+' • '+p.details.warranty+'</p>') : '') +
+                    '<p class="price">$'+p.price+'</p>' +
+                    '<div><button class="primary" data-id="'+p.id+'" data-track="add-'+p.id+'">Add to cart</button> ' +
+                    '<a href="/api/product/'+p.id+'" data-track="open-'+p.id+'">View</a></div>';
+      card.querySelector('button').addEventListener('click', ()=>window.addToCart(p.id));
+      grid.appendChild(card);
+    });
+    page += 1;
+  }
+  load();
+  document.getElementById('loadMore').addEventListener('click', load);
+  document.getElementById('searchForm').addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    q = fd.get('q')||''; sort = fd.get('sort')||'price_asc'; page=1; grid.innerHTML=''; load();
+  });
+})();
+</script>
+</body>
+</html>
