@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"/><title>Products — Acme</title><link rel="stylesheet" href="/assets/styles.css"/></head>
+<body data-page="products">
+<header><div class="container"><nav><a href="/">Home</a><a href="/products">Products</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/support">Support</a></nav></div></header>
+<main class="container">
+  <div class="card">
+    <form id="searchForm">
+      <label>Search <input name="q" placeholder="widget, gizmo, budget"/></label>
+      <select name="sort">
+        <option value="price_asc">Price (low→high)</option>
+        <option value="price_desc">Price (high→low)</option>
+      </select>
+      <button type="submit">Apply</button>
+    </form>
+  </div>
+  <div id="grid" class="grid"></div>
+  <div id="more" class="card"><button id="loadMore">Load more</button></div>
+</main>
+<footer class="container"><span class="small">© Acme Gadgets</span></footer>
+<script src="/assets/app.js"></script>
+<script>
+(async function(){
+  const params = new URLSearchParams(location.search);
+  const exp = params.get('exp');
+  let page = 1, q=params.get('q')||'', sort=params.get('sort')||'price_asc';
+  const grid = document.getElementById('grid');
+
+  async function load(){
+    const url = new URL('/api/products', location.origin);
+    url.searchParams.set('page', page);
+    url.searchParams.set('limit', 6);
+    url.searchParams.set('sort', sort);
+    if (q) url.searchParams.set('q', q);
+    if (exp) url.searchParams.set('exp', exp);
+    const res = await fetch(url);
+    const data = await res.json();
+    data.results.forEach(p=>{
+      const a = document.createElement('a');
+      a.className='card';
+      a.href = '/api/product/'+p.id+(exp?('?exp='+encodeURIComponent(exp)):'')
+      a.innerHTML = '<img class="product" src="'+p.img+'" alt="'+p.name+'"/>' +
+                    '<h3>'+p.name+'</h3>' +
+                    (p.teaser?('<p>'+p.teaser+'</p>'):'') +
+                    '<p class="price">$'+p.price+'</p>';
+      grid.appendChild(a);
+    });
+    page += 1;
+  }
+  load(); // initial
+  document.getElementById('loadMore').addEventListener('click', load);
+  document.getElementById('searchForm').addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    q = fd.get('q')||''; sort = fd.get('sort')||'price_asc'; page=1;
+    grid.innerHTML = '';
+    load();
+  });
+})();
+</script>
+</body>
+</html>

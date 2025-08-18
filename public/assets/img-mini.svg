@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#86efac" offset="0"/><stop stop-color="#ffffff" offset="1"/></linearGradient></defs>
+  <rect x="0" y="0" width="800" height="500" fill="url(#g)"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#0f172a" font-family="Arial" font-size="48">Gadget Mini</text>
+</svg>
